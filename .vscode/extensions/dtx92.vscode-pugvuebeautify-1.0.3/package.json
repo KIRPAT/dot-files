@@ -1,0 +1,88 @@
+{
+	"name": "vscode-pugvuebeautify",
+	"displayName": "Pug vue beautify",
+	"description": "Simple Pug/Jade beautify with Vuu support",
+	"version": "1.0.3",
+	"publisher": "dtx92",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.4.0"
+	},
+	"icon": "icon.png",
+	"homepage": "https://github.com/mrmlnc/vscode-pugvuebeautify/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mrmlnc/vscode-pugvuebeautify"
+	},
+	"keywords": [
+		"vue",
+		"vetur",
+		"pug",
+		"jade",
+		"format",
+		"beautify",
+		"beautifier"
+	],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:pugvuebeautify.execute"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "pugvuebeautify.execute",
+				"title": "Beautify pug/jade for vue"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "pugvuebeautify configuration options",
+			"properties": {
+				"pugvuebeautify.fillTab": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"default": null,
+					"description": "Indent with Tabs, if false, with spaces."
+				},
+				"pugvuebeautify.omitDiv": {
+					"type": "boolean",
+					"default": false,
+					"description": "Omit div tag when it has id or class."
+				},
+				"pugvuebeautify.tabSize": {
+					"type": [
+						"number",
+						"null"
+					],
+					"default": null,
+					"description": "When `fillTab` is false, fill `tabSize` spaces."
+				}
+			}
+		}
+	},
+	"devDependencies": {
+		"vscode": "^0.11.0",
+		"typescript": "^2.0.0",
+		"tslint": "3.15.0"
+	},
+	"dependencies": {
+		"pug-beautify": "0.1.1"
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"__metadata": {
+		"id": "85d9beac-b80e-4b26-846d-72325e4a5aa1",
+		"publisherId": "28cf2870-9d44-41af-94ea-373fb96e5b92",
+		"publisherDisplayName": "dtx92"
+	}
+}

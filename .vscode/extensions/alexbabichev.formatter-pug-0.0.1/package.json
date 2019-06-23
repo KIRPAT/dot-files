@@ -1,0 +1,115 @@
+{
+	"name": "formatter-pug",
+	"displayName": "formatter-pug",
+	"description": "Syntax highlighting for Pug templates ",
+	"version": "0.0.1",
+	"publisher": "alexbabichev",
+	"author": "Alex Babichev",
+	"homepage": "https://github.com/alexbabichev/vscode-pug-formatter#readme",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.6.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"galleryBanner": {
+		"color": "#1e1e1e",
+		"theme": "dark"
+	},
+	"icon": "assets/pug-logo_128x128.png",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alexbabichev/vscode-pug-formatter.git"
+	},
+	"bugs": {
+		"url": "https://github.com/alexbabichev/vscode-pug-formatter/issues"
+	},
+	"activationEvents": [
+		"onLanguage:pug",
+		"onCommand:extension.format-pug"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "pug",
+				"aliases": [
+					"Pug"
+				],
+				"extensions": [
+					".pug"
+				],
+				"configuration": "./languages/lang.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "extension.format-pug",
+				"title": "Format Pug Files"
+			}
+		],
+		"grammars": [
+			{
+				"language": "pug",
+				"path": "./syntaxes/pug.tmLanguage.json",
+				"scopeName": "text.pug",
+				"embeddedLanguages": {
+					"text.html.basic": "html",
+					"source.js": "javascript",
+					"source.ts": "typescript"
+				}
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Pug",
+			"properties": {
+				"pug.format.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Complete functions with their parameter signature."
+				},
+				"formatter-pug.fillTab": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"default": null,
+					"description": "Indent with Tabs, if false, with spaces."
+				},
+				"formatter-pug.omitDiv": {
+					"type": "boolean",
+					"default": false,
+					"description": "Omit div tag when it has id or class."
+				},
+				"formatter-pug.tabSize": {
+					"type": [
+						"number",
+						"null"
+					],
+					"default": 2,
+					"description": "When `fillTab` is false, fill `tabSize` spaces."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install && tsc"
+	},
+	"dependencies": {
+		"pug-beautify": "0.1.1"
+	},
+	"devDependencies": {
+		"@types/node": "*",
+		"vscode": "1.0.3",
+		"typescript": "2.0.6"
+	},
+	"__metadata": {
+		"id": "0c3167bc-354d-4c84-ad6f-160d4f2243ea",
+		"publisherId": "27586f59-d0fa-4414-ac17-26aaf28a5591",
+		"publisherDisplayName": "Alex Babichev"
+	}
+}

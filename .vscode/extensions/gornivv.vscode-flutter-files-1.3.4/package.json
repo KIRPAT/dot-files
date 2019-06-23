@@ -1,0 +1,239 @@
+{
+	"name": "vscode-flutter-files",
+	"displayName": "Flutter Files",
+	"description": "Quickly scaffold flutter bloc file templates",
+	"version": "1.3.4",
+	"icon": "assets/icon.png",
+	"publisher": "gornivv",
+	"author": {
+		"name": "Kravchenko Igor"
+	},
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Gorniv/vscode-flutter-files"
+	},
+	"bugs": {
+		"url": "https://github.com/Gorniv/vscode-flutter-files/issues"
+	},
+	"keywords": [
+		"Flutter",
+		"angular-cli",
+		"Dart",
+		"BLoC",
+		"Templates"
+	],
+	"categories": [
+		"Other",
+		"Programming Languages",
+		"Snippets"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Flutter Files menu option configuration",
+			"properties": {
+				"flutter-files.menu.bigpack": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.smallpack": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.bloc": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.event": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.model": {
+					"type": "boolean",
+					"default": false,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.page": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.provider": {
+					"type": "boolean",
+					"default": false,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.repository": {
+					"type": "boolean",
+					"default": false,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.screen": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.state": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				},
+				"flutter-files.menu.index": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows or hides the menu item."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "extension.addFlutter2BigPack",
+				"title": "New Big Pack Bloc"
+			},
+			{
+				"command": "extension.addFlutter2SmallPack",
+				"title": "New Small Pack Bloc"
+			},
+			{
+				"command": "extension.addFlutter2Bloc",
+				"title": "New Bloc"
+			},
+			{
+				"command": "extension.addFlutter2Event",
+				"title": "New Event"
+			},
+			{
+				"command": "extension.addFlutter2Model",
+				"title": "New Model"
+			},
+			{
+				"command": "extension.addFlutter2Page",
+				"title": "New Page"
+			},
+			{
+				"command": "extension.addFlutter2Provider",
+				"title": "New Provider"
+			},
+			{
+				"command": "extension.addFlutter2Repository",
+				"title": "New Repository"
+			},
+			{
+				"command": "extension.addFlutter2Screen",
+				"title": "New Screen"
+			},
+			{
+				"command": "extension.addFlutter2State",
+				"title": "New State"
+			},
+			{
+				"command": "extension.addFlutter2zIndex",
+				"title": "New Index"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "config.flutter-files.menu.bigpack",
+					"command": "extension.addFlutter2BigPack",
+					"group": "0Flutter Pack"
+				},
+				{
+					"when": "config.flutter-files.menu.smallpack",
+					"command": "extension.addFlutter2SmallPack",
+					"group": "0Flutter Pack"
+				},
+				{
+					"when": "config.flutter-files.menu.bloc",
+					"command": "extension.addFlutter2Bloc",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.event",
+					"command": "extension.addFlutter2Event",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.model",
+					"command": "extension.addFlutter2Model",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.page",
+					"command": "extension.addFlutter2Page",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.provider",
+					"command": "extension.addFlutter2Provider",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.repository",
+					"command": "extension.addFlutter2Repository",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.screen",
+					"command": "extension.addFlutter2Screen",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.state",
+					"command": "extension.addFlutter2State",
+					"group": "1Flutter"
+				},
+				{
+					"when": "config.flutter-files.menu.index",
+					"command": "extension.addFlutter2zIndex",
+					"group": "2Flutter Index"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run templates && webpack --mode production",
+		"compile": "npm run templates && webpack --mode none",
+		"watch": "npm run templates && webpack --mode none",
+		"test-compile": "tsc -p ./",
+		"templates": "copyfiles templates/**/*.tmpl templates/**/*.tmpl ./out/",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test",
+		"format:check": "prettier --write --config ./.prettierrc --list-different \"src/**/*{.ts,.json}\"",
+		"vsce:package": "vsce package",
+		"vsce:publish": "vsce publish"
+	},
+	"devDependencies": {
+		"@types/mocha": "5.2.6",
+		"@types/node": "11.13.0",
+		"copyfiles": "2.1.0",
+		"prettier": "1.16.4",
+		"ts-loader": "5.3.3",
+		"tslint": "5.15.0",
+		"tslint-config-airbnb": "5.11.1",
+		"typescript": "3.2.2",
+		"vscode": "1.1.33",
+		"webpack": "4.29.6",
+		"webpack-cli": "3.3.0"
+	},
+	"dependencies": {
+		"js-yaml": "3.13.1",
+		"express-es6-template-engine": "2.1.7"
+	},
+	"__metadata": {
+		"id": "4b58b651-ff0e-49c7-90f1-39dcd3f49e0d",
+		"publisherId": "4c479e45-24d5-445c-b2e4-8032bcec8c3c",
+		"publisherDisplayName": "Igor Kravchenko"
+	}
+}
